@@ -3,13 +3,7 @@ package com.buildlive.userservice.entity;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,19 +19,20 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfo {
+public class UserCredential {
+
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.UUID)
 	private UUID id;
 	
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
-	private boolean isBlocked = false;
+	private boolean isBlocked;
 	private boolean isVerified;
 	
+
 	@Enumerated(EnumType.STRING)
 	private Role roles;
 	
