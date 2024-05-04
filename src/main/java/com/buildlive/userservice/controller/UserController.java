@@ -51,6 +51,10 @@ public class UserController {
         return ResponseEntity.ok(userService.findUsersByEmail(email));
     }
 
+    @GetMapping("/test")
+    public String testDep(){
+        return "hellooo";
+    }
 
 
 
