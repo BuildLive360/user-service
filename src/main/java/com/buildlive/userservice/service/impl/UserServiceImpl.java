@@ -7,11 +7,14 @@ import com.buildlive.userservice.entity.UserCredential;
 import com.buildlive.userservice.repo.UserCredentialRepository;
 import com.buildlive.userservice.service.UserService;
 import com.buildlive.userservice.service.client.AuthClient;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -74,5 +77,23 @@ public class UserServiceImpl implements UserService {
         else {
             throw new RuntimeException("User NOt found");
         }
+    }
+
+    @Override
+    public List<UserCredential> findUsersByEmail(String email) {
+            List < UserCredential> userList = userInfoRepository.findAll();
+        List<UserCredential> matchingUsers = userList.stream()
+                .filter(user -> user.getEmail().equalsIgnoreCase(email))
+                .collect(Collectors.toList());
+
+        if (!matchingUsers.isEmpty()) {
+            return matchingUsers; // Return the matching user if found
+        }
+
+        // If no user matches the full email, return users whose emails start with the input
+        return userList.stream()
+                .filter(user -> user.getEmail().toLowerCase().startsWith(email.toLowerCase()))
+                .collect(Collectors.toList());
+
     }
 }
