@@ -96,6 +96,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>buildlive-userservice</finalName>
 	</build>
 
 </project>
