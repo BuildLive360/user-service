@@ -38,7 +38,8 @@ public class UserCredential {
 	
 	private String otp;
 	private LocalDateTime expiryTime;
-	private String image;
+	private String imageUrl;
+	private String imagePublicId;
 	
 	
 	
