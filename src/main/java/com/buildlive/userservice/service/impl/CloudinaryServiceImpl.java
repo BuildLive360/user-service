@@ -16,7 +16,7 @@ public class CloudinaryServiceImpl  implements ICloudinaryService {
     @Autowired
     private Cloudinary cloudinary;
     @Override
-    public Map upload(MultipartFile file, String folder) {
+    public Map<?,?> upload(MultipartFile file, String folder) {
 
         try{
             Map<String,Object> options = ObjectUtils.asMap("folder",folder);
