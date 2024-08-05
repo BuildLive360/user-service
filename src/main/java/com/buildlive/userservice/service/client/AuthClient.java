@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "AUTH-SERVICE",url = "http://3.132.56.186:8070")
+@FeignClient(name = "AUTH-SERVICE",url = "http://18.116.208.129:8070")
 public interface AuthClient {
 
         @PostMapping("/api/v1/auth/register")
